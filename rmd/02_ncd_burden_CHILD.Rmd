@@ -23,7 +23,7 @@ data_ncd_mini
 # You should pivot the data wider to show each country in a separate column.
 data_ncd_wide <- data_ncd_mini %>% 
   pivot_wider(names_from = Entity,
-              values_from = `DALYs (Disability-Adjusted Life Years) - Communicable, maternal, neonatal, and nutritional diseases - Sex: Both - Age: Age-standardized (Rate)`)
+              values_from = `DALYs (Disability-Adjusted Life Years) - Non-communicable diseases - Sex: Both - Age: Age-standardized (Rate)`)
 # Use kable() from the knitr package to render the table.
 kable(data_ncd_wide)
 ```
