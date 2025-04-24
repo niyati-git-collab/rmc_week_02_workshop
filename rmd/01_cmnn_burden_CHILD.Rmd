@@ -10,7 +10,10 @@ data_cmnn <- read_csv(here("data/burden-of-disease-cmnn.csv"))
 
 ```{r}
 # Filter the dataset to include only the three countries chosen by your group.
-data_cmnn_mini <- "WRITE_YOUR_CODE_HERE"
+data_cmnn_mini <- data_cmnn %>% 
+  filter(Entity %in% c("Latvia", "Laos", "Jamaica")) %>% 
+  select(-Code)
+data_cmnn_mini
 ```
 
 ## Table of Estimates for CMNN Burden Over Time
@@ -18,8 +21,13 @@ data_cmnn_mini <- "WRITE_YOUR_CODE_HERE"
 ```{r}
 # Here render a table for the DALY burden over time for the three countries.
 # You should pivot the data wider to show each country in a separate column.
-data_cmnn_wide <- "WRITE_YOUR_CODE_HERE"
+data_cmnn_wide <- data_cmnn_mini %>% 
+  pivot_wider(names_from = Entity,
+              values_from = `DALYs (Disability-Adjusted Life Years) - Communicable, maternal, neonatal, and nutritional diseases - Sex: Both - Age: Age-standardized (Rate)`)
+
 # Use kable() from the knitr package to render the table.
+
+kable(data_cmnn_wide)
 ```
 
 ## Plot Showing Trends in CMNN Burden Over Time
@@ -27,8 +35,18 @@ data_cmnn_wide <- "WRITE_YOUR_CODE_HERE"
 ```{r}
 # Here, plot a line graph showing the trend of DALY burden for the chosen countries over time. You can use ggplot2 to create this plot. Each country's line should be a different color.
 # NOTE: Use your long 'mini' data frame for plotting, not the wide data used for the table. 
+plot_1 <- data_cmnn_mini %>% 
+  ggplot(aes(x=Year,
+             y=`DALYs (Disability-Adjusted Life Years) - Communicable, maternal, neonatal, and nutritional diseases - Sex: Both - Age: Age-standardized (Rate)`,
+             colour = Entity)) +
+  geom_line(size = 0.6) +
+  labs(x = "Year",
+       y = "DALYs Lost",
+       title = "Plot Showing Trends in CMNN Burden Over Time")
+plot_1
+
 ```
 
 ## Summary of CMNN Burden Findings
+For Laos the DALYs lost due to CMNN burden were at the peak in 1990 but with passing time it decreased and became stable in 2020. For Jamaica and Latvia, the DALYs lost reamined stable than Laos between 1990 and 2020, indicating lesser CNMM burden in those two countries.
 
-Provide a brief analysis based on the data presented in the table and chart. Highlight any significant findings or patterns. About 3 sentences.
