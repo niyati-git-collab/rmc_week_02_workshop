@@ -42,7 +42,7 @@ plot_1 <- data_cmnn_mini %>%
   geom_line(size = 0.6) +
   labs(x = "Year",
        y = "DALYs Lost",
-       title = "Plot Showing Trends in CMNN Burden Over Time")
+       title = "Trends in CMNN Burden Over Time")
 plot_1
 
 ```
