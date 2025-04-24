@@ -35,7 +35,7 @@ kable(data_ncd_wide)
 # NOTE: Use your long 'mini' data frame for plotting, not the wide data used for the table. 
 plot_2 <- data_ncd_mini %>% 
   ggplot(aes(x=Year,
-             y=`DALYs (Disability-Adjusted Life Years) - Communicable, maternal, neonatal, and nutritional diseases - Sex: Both - Age: Age-standardized (Rate)`,
+             y=`DALYs (Disability-Adjusted Life Years) - Non-communicable diseases - Sex: Both - Age: Age-standardized (Rate)`,
              colour = Entity)) +
   geom_line(size = 0.6) +
   labs(x = "Year",
